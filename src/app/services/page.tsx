@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { getTitle } from '@/constants'
 import jsonData from '@/data.json'
 
-const { title, sections } = jsonData.pages.services
+const { title, sections } = jsonData.pages.stable.services
 
 export const metadata: Metadata = {
   title: getTitle(title),

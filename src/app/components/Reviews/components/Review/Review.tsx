@@ -21,7 +21,9 @@ const Review = ({ rating, comment }: Props) => (
         ))}
       </div>
     </header>
-    <p className="text">{'"' + comment + '"'}</p>
+    <div className="comment">
+      <p className="text">{'"' + comment + '"'}</p>
+    </div>
   </li>
 )
 

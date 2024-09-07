@@ -1,7 +1,3 @@
-:root {
-  --glb-line-width: 0.0625rem;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,8 +12,10 @@
 }
 
 html {
+  --document-background-color: var(--pal-color-gs-50);
+
   text-rendering: optimizeLegibility;
-  background-color: var(--pal-color-gs-50);
+  background-color: var(--document-background-color);
 }
 
 ::selection {
@@ -70,12 +68,15 @@ span {
   display: block;
 }
 
-input {
+input,
+textarea {
   outline: none;
 }
 
 button {
   border: none;
+
+  background-color: transparent;
   cursor: pointer;
 
   &:disabled {
@@ -86,6 +87,19 @@ button {
   &:active {
     box-shadow: initial !important;
   }
+}
+
+.button-look {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--pal-size-xl);
+
+  font-weight: 500;
+  letter-spacing: 0.0125rem;
+
+  border-radius: var(--pal-size-2xs);
+  cursor: pointer;
 }
 
 form {
@@ -114,17 +128,31 @@ form {
   }
 }
 
-.full-background::before {
-  position: absolute;
-  z-index: -1;
-  top: 0;
+.full-background {
+  position: relative;
 
-  width: 100vw;
-  height: 100%;
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: calc((100vw - 100%) / -2);
 
-  background-color: var(--pal-color-a-l2);
+    width: 100vw;
+    height: 100%;
 
-  content: '';
+    background-color: var(--pal-color-a-l2);
+
+    content: '';
+  }
+
+  &.glass {
+    padding-block: 3.5rem;
+
+    &::before {
+      background-color: rgba(var(--pal-color-base-black), 0.125);
+      backdrop-filter: blur(4rem);
+    }
+  }
 }
 
 .card {
@@ -132,4 +160,44 @@ form {
 
   border-radius: var(--border-radius);
   background-color: var(--pal-color-white);
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4375rem;
+
+  label {
+    display: flex;
+    gap: var(--pal-size-xs);
+
+    font-size: var(--pal-size-font-xs);
+
+    color: var(--pal-color-a-d1);
+
+    span {
+      color: var(--pal-color-a-d2);
+    }
+  }
+
+  input,
+  textarea {
+    border-width: var(--glb-line-width);
+    border-style: solid;
+    border-color: rgba(var(--pal-color-base-a-d1), 0.375);
+    width: 100%;
+
+    line-height: 1;
+    border-radius: var(--pal-size-2xs);
+    background-color: var(--control-background-color, transparent);
+
+    transition: color var(--pal-time-s) ease-out,
+      border-color var(--pal-time-s) ease-out;
+
+    &:focus {
+      border-color: var(--pal-color-a-d1);
+
+      color: var(--pal-color-black);
+    }
+  }
 }

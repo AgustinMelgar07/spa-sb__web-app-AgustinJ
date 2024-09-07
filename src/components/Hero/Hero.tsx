@@ -1,19 +1,18 @@
 import './Hero.css'
 import Image from 'next/image'
+import { classList } from '@/helpers'
 
 interface Props {
-  title: string
+  handleClass?: string
   children?: React.ReactNode
 }
 
-const Hero = ({ title, children }: Props) => {
-  return (
-    <section className="hero">
-      <h1>{title}</h1>
-      <Image src="/hero.webp" width={1920} height={1920} alt="" />
-      {children}
-    </section>
-  )
-}
+const Hero = ({ handleClass, children }: Props) => (
+  <section className={classList('hero', handleClass)}>
+    <Image src="/hero.webp" width={2048} height={1162} alt="" loading="eager" />
+    {/* TODO: alt */}
+    {children}
+  </section>
+)
 
 export default Hero

@@ -11,23 +11,6 @@
   background-color: rgba(var(--pal-color-base-black), 0.4);
   backdrop-filter: blur(4rem);
 
-  nav {
-    display: flex;
-    gap: var(--pal-size-2xl);
-
-    a {
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(var(--pal-color-base-white), 0.75);
-
-      transition: color var(--pal-time-xs) ease-out;
-
-      &:hover {
-        color: var(--pal-color-white);
-      }
-    }
-  }
-
   .cmp-hamburger {
     visibility: hidden;
   }
@@ -57,10 +40,4 @@
 
   /* Oculta los desbordamientos */
   background-color: var(--document-background-color);
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: var(--pal-size-xl);
-  }
 }

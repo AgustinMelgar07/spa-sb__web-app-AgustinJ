@@ -1,4 +1,60 @@
-.philosophy {
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-m);
+
+    text-align: center;
+    color: var(--pal-color-white);
+
+    p {
+      font-size: var(--pal-size-font-l);
+      color: var(--pal-color-a-d2);
+    }
+  }
+
+  .glass {
+    width: 100%;
+    max-width: 28.5rem;
+
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--pal-size-l);
+      margin-inline: auto;
+
+      > * {
+        flex-grow: 1;
+        flex-basis: 13.5rem;
+
+        &:nth-of-type(1) {
+          color: var(--pal-color-gs-900);
+        }
+      }
+    }
+  }
+
+  .enter-animate {
+    scale: 0.875;
+    opacity: 0;
+
+    animation: show 3s ease forwards;
+  }
+}
+
+@keyframes show {
+  to {
+    scale: initial;
+    opacity: initial;
+  }
+}
+
+.about-us {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -33,22 +89,6 @@
   .items {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--pal-size-l);
-    width: 100%;
-  }
-}
-
-.reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8rem;
-
-  ul {
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
     gap: var(--pal-size-l);
     width: 100%;
   }

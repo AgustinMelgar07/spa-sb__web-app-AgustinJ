@@ -9,7 +9,7 @@ const Input = ({ id, title, hideLabel = false, required, ...rest }: Props) => {
   const inputTitle = required ? `${title} (Requerido)` : title
 
   return (
-    <div className="cmp-input">
+    <div className="cmp-input control">
       {!hideLabel && (
         <label htmlFor={id}>
           {title}

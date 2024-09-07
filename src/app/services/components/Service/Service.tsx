@@ -4,17 +4,17 @@ import Image from 'next/image'
 interface Props {
   serviceKey: string
   title: string
-  works: {
+  treatments: {
     title: string
     desc: string
   }[]
 }
 
-const Service = ({ serviceKey, title: serviceTitle, works }: Props) => (
+const Service = ({ serviceKey, title: serviceTitle, treatments }: Props) => (
   <section className="cmp-service" id={serviceKey}>
     <h2 className="text">{serviceTitle}</h2>
     <ul>
-      {works.map(({ title, desc }, index) => (
+      {treatments.map(({ title, desc }, index) => (
         <li key={index}>
           <div>
             <h3 className="text">{title}</h3>
@@ -24,7 +24,7 @@ const Service = ({ serviceKey, title: serviceTitle, works }: Props) => (
             src={`/services/${serviceKey}-${index}.webp`}
             width={1280}
             height={720}
-            alt={`Foto del trabajo "${title}" en ${serviceTitle}`}
+            alt={`Foto del tratamiento "${title}" en ${serviceTitle}. En el Spa Sentirse Bien`}
           />
         </li>
       ))}

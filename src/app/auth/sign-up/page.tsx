@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { getTitle } from '@/constants'
 import jsonData from '@/data.json'
 
-const { title } = jsonData.pages.login
+const { title } = jsonData.pages.dynamic.login
 
 export const metadata: Metadata = {
   title: getTitle(title),

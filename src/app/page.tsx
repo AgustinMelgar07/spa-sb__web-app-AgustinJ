@@ -1,72 +1,67 @@
 import './page.css'
 import Image from 'next/image'
-import { Hero } from '@/components'
-import { Review, ServiceCard } from './components'
+import { Hero, LinkButton } from '@/components'
+import { Reviews, ServiceCard } from './components'
 import jsonData from '@/data.json'
 
-const { pages } = jsonData
-const { home } = pages
-const { title, sections } = home
-const { philosophy, services, reviews } = sections
-
-const betterReviews = [
-  {
-    id: 1,
-    rating: 5,
-    comment:
-      'Un oasis en la ciudad. El servicio fue impecable y me fui sintiéndome completamente renovada.',
-  },
-  {
-    id: 2,
-    rating: 5,
-    comment:
-      'Desde que entré, me sentí en otro mundo. El personal fue muy atento, y la experiencia completa fue increíble.',
-  },
-  {
-    id: 3,
-    rating: 4,
-    comment:
-      'Muy buena experiencia, me fui con una sensación de paz total. Las instalaciones son excelentes y el personal muy profesional.',
-  },
-  {
-    id: 4,
-    rating: 4,
-    comment:
-      'Disfruté mucho mi visita al SPA. Los tratamientos fueron muy buenos y el ambiente es perfecto para desconectar.',
-  },
-]
+const { pages, documentInfo } = jsonData
+const { stable, dynamic } = pages
+const { home } = stable
+const { reserve } = dynamic
+const { sections } = home
+const { hero, aboutUs, services } = sections
+const { phrase } = hero
 
 const Home = () => (
   <>
-    <Hero title={title} />
-    <section className="philosophy">
-      <Image src="/home/philosophy.webp" width={720} height={720} alt="" />
+    <Hero handleClass="home-hero">
+      <header>
+        <h1 className="text enter-animate">{documentInfo.title.base}</h1>
+        <p className="text enter-animate">{phrase}</p>
+      </header>
+      <div className="full-background glass">
+        <div className="enter-animate">
+          <LinkButton
+            title={reserve.title}
+            faIcon="fa-regular fa-calendar-check"
+            href={reserve.page}
+            style={{ size: 'l' }}
+          />
+          <LinkButton
+            title="Descubre más"
+            href="#about-us"
+            style={{ type: 'secondary', size: 'l' }}
+          />
+        </div>
+      </div>
+    </Hero>
+    <section className="about-us" id="about-us">
+      <Image
+        src={`/home/${aboutUs.img.file}`}
+        width={1024}
+        height={1024}
+        alt={aboutUs.img.alt}
+      />
       <div>
-        <h2>{philosophy.title}</h2>
-        <p className="text">{philosophy.text}</p>
+        <h2>{aboutUs.title}</h2>
+        <div className="paragraphs">
+          {aboutUs.text.map((paragraph, index) => (
+            <p key={index} className="text">
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
     <section className="services full-background">
       <h2>{services.title}</h2>
       <div className="items">
-        {pages.services.sections.map(({ serviceKey, title }) => (
-          <ServiceCard
-            key={serviceKey}
-            url={`/services#${serviceKey}`}
-            title={title}
-            img="webp"
-          />
+        {stable.services.sections.map(service => (
+          <ServiceCard key={service.serviceKey} {...service} />
         ))}
       </div>
     </section>
-    <section className="reviews">
-      <h2>{reviews.title}</h2>
-      <ul>
-        {betterReviews.map(({ id, rating, comment }) => (
-          <Review key={id} rating={rating} comment={comment} />
-        ))}
-      </ul>
-    </section>
+    <Reviews />
   </>
 )
 

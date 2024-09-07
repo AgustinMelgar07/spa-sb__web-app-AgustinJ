@@ -1,17 +1,14 @@
 import './SimpleHero.css'
-import Image from 'next/image'
+import { Hero } from '..'
 
 interface Props {
   title: string
 }
 
-const SimpleHero = ({ title }: Props) => {
-  return (
-    <section className="cmp-simple-hero">
-      <h1>{title}</h1>
-      <Image src="/hero.webp" width={1920} height={1920} alt="" />
-    </section>
-  )
-}
+const SimpleHero = ({ title }: Props) => (
+  <Hero handleClass="simple-hero">
+    <h1 className="text">{title}</h1>
+  </Hero>
+)
 
 export default SimpleHero

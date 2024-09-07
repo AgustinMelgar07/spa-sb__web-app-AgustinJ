@@ -1,6 +1,4 @@
 .cmp-reserve-form {
-  /* max-width: 30rem; */
-
   .treatments {
     display: flex;
     flex-direction: column;
@@ -12,7 +10,7 @@
       gap: var(--pal-size-s);
       border-width: 0;
       border-style: solid;
-      border-color: var(--pal-color-a-l1);
+      border-color: var(--pal-color-a-l2);
       border-top-width: var(--glb-line-width);
       padding: 0;
 
@@ -37,12 +35,12 @@
         text-wrap: nowrap;
 
         border-radius: var(--pal-size-2xs);
-        background-color: var(--pal-color-white);
         accent-color: var(--pal-color-a-d1);
         cursor: pointer;
 
         transition: background-color var(--pal-time-s) ease-out;
 
+        &:has(input:checked),
         &:hover {
           background-color: var(--pal-color-a-l2);
         }

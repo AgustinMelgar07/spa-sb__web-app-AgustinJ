@@ -1,22 +1,9 @@
-.cmp-simple-hero {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.simple-hero {
   height: 37.5dvh;
 
   color: var(--pal-color-white);
 
   img {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-
-    width: 100vw;
-    height: 100%;
-
-    object-fit: cover;
-    filter: brightness(0.6);
+    object-position: 50% 45%;
   }
 }

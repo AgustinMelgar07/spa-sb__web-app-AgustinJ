@@ -1,34 +1,18 @@
 .cmp-section {
   flex-grow: 1;
+  flex-basis: 2rem;
 
   display: flex;
   flex-direction: column;
   gap: var(--pal-size-xl);
-  min-width: 8rem;
+
+  &:has(.map) {
+    flex-basis: 22rem;
+  }
 
   h4 {
     font-size: var(--pal-size-font-s);
     text-transform: uppercase;
     color: var(--pal-color-a);
-  }
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    row-gap: var(--pal-size-s);
-    column-gap: var(--pal-size-m);
-
-    @media (width <= 32rem) {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-
-    > * {
-      text-wrap: nowrap;
-    }
-
-    a {
-      text-decoration: none;
-    }
   }
 }

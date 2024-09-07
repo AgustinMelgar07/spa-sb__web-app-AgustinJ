@@ -23,6 +23,9 @@
       --cmp-icon-size: var(--pal-size-s);
 
       align-content: center;
+      border-width: var(--glb-line-width);
+      border-style: solid;
+      border-color: var(--pal-color-a-l2);
       aspect-ratio: 1;
       width: var(--profile-picture-size);
 
@@ -42,7 +45,7 @@
     }
   }
 
-  p {
+  .comment {
     margin-left: calc(var(--profile-picture-size) / 2);
     padding: var(--pal-size-l);
 

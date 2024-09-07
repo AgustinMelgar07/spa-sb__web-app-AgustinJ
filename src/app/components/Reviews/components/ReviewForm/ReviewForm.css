@@ -1,0 +1,60 @@
+.cmp-review-form {
+  flex-basis: auto;
+
+  width: 100%;
+  max-width: 40rem;
+
+  header {
+    .stars {
+      gap: 0;
+
+      label {
+        --cmp-icon-size: var(--pal-size-m);
+
+        position: relative;
+
+        align-content: center;
+        aspect-ratio: 1;
+        width: var(--pal-size-l);
+
+        transition: translate var(--pal-time-s) ease-out;
+
+        &:hover {
+          translate: 0 calc(var(--pal-size-3xs) * -1);
+        }
+
+        > * {
+          margin-inline: auto;
+        }
+
+        input {
+          position: absolute;
+          top: 0;
+
+          aspect-ratio: 1;
+          width: var(--pal-size-l);
+
+          opacity: 0;
+          cursor: pointer;
+        }
+      }
+    }
+
+    small {
+      letter-spacing: 0.0625rem;
+    }
+  }
+
+  .comment {
+    --control-background-color: var(--document-background-color);
+
+    padding: var(--pal-size-xs);
+  }
+
+  .cmp-button {
+    align-self: flex-end;
+
+    width: 100%;
+    max-width: 10rem;
+  }
+}

@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { getTitle } from '@/constants'
 import jsonData from '@/data.json'
 
-const { title } = jsonData.pages.login
+const { title } = jsonData.pages.dynamic.login
 
 export const metadata: Metadata = {
   title: getTitle(title),
@@ -14,10 +14,17 @@ export const metadata: Metadata = {
 const Login = () => (
   <>
     <SimpleHero title={title} />
-    <section className="login card">
-      <LoginForm />
-      <small>¿No tienes una cuenta?</small>
-      <LinkButton href="/auth/sign-up" title="Registrarse" />
+    <section className="login section-form">
+      Title
+      <div className="card">
+        <LoginForm />
+        <small>¿No tienes una cuenta?</small>
+        <LinkButton
+          title="Registrarse"
+          href="/auth/sign-up"
+          style={{ type: 'secondary' }}
+        />
+      </div>
     </section>
   </>
 )

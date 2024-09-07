@@ -1,55 +1,15 @@
-.philosophy {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
-
-  img {
-    aspect-ratio: 1;
-    width: clamp(16rem, 50vw, 38rem);
-    height: initial;
-
-    border-radius: var(--border-radius);
-  }
-
-  > div {
-    flex-grow: 1;
-    flex-basis: 22rem;
-
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
-}
-
-.services {
+.not-found {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8rem;
+  gap: 6rem;
 
-  .items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--pal-size-l);
-    width: 100%;
-  }
-}
+  color: var(--pal-color-white);
 
-.reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8rem;
+  p {
+    position: relative;
 
-  ul {
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    gap: var(--pal-size-l);
-    width: 100%;
+    max-width: 40rem;
   }
 }

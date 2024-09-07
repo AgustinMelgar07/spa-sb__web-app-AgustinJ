@@ -2,19 +2,9 @@
 
 import './Navs.css'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Hamburger } from './components'
-import { reassemble } from '@/helpers'
+import { Hamburger, Links } from './components'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import jsonData from '@/data.json'
-
-const { pages } = jsonData
-const { stable } = pages
-
-const links = reassemble(stable, (_, { page, title }) => ({
-  href: `/${page}`,
-  title,
-}))
+import { SessionProvider } from 'next-auth/react'
 
 const Navs = () => {
   const asideRef = useRef<HTMLElement | null>(null)
@@ -54,28 +44,17 @@ const Navs = () => {
   }, [handleClickOutside, isAsideOpen])
 
   return (
-    <>
+    <SessionProvider>
       <header className="cmp-header">
         <Image className="logo" src="/logo.svg" width={40} height={40} alt="" />
-        <nav>
-          {links.map(({ href, title }) => (
-            <Link key={href} href={href}>
-              {title}
-            </Link>
-          ))}
-        </nav>
+        {/* TODO: alt */}
+        <Links />
         <Hamburger isOpen={isAsideOpen} handleClick={handleHamburgerClick} />
       </header>
       <aside className="cmp-aside" ref={asideRef}>
-        <nav>
-          {links.map(({ href, title }) => (
-            <Link key={href} href={href}>
-              {title}
-            </Link>
-          ))}
-        </nav>
+        <Links style={{ type: 'aside' }} />
       </aside>
-    </>
+    </SessionProvider>
   )
 }
 

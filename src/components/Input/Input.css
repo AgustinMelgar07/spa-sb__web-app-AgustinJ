@@ -1,40 +1,6 @@
-.cmp-input {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4375rem;
+.cmp-input input {
+  padding-inline: var(--pal-size-s);
+  height: var(--pal-size-2xl);
 
-  label {
-    display: flex;
-    gap: var(--pal-size-xs);
-
-    font-size: var(--pal-size-font-xs);
-
-    color: var(--pal-color-a-d1);
-
-    span {
-      color: var(--pal-color-a-d2);
-    }
-  }
-
-  input {
-    border-width: var(--glb-line-width);
-    border-style: solid;
-    border-color: rgba(var(--pal-color-base-a-d1), 0.375);
-    padding-inline: var(--pal-size-s);
-    width: 100%;
-    height: var(--pal-size-2xl);
-
-    line-height: 1;
-    border-radius: var(--pal-size-2xs);
-    background-color: transparent;
-
-    transition: color var(--pal-time-s) ease-out,
-      border-color var(--pal-time-s) ease-out;
-
-    &:focus {
-      border-color: var(--pal-color-a-d1);
-
-      color: var(--pal-color-black);
-    }
-  }
+  line-height: 1;
 }

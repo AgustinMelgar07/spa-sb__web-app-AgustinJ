@@ -1,16 +1,17 @@
 import './Section.css'
 import { Separator } from '@/components'
+import { ReactNode } from 'react'
 
 interface Props {
   title: string
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const Section = ({ title, children }: Props) => (
   <section className="cmp-section">
     <h4>{title}</h4>
     <Separator />
-    <div>{children}</div>
+    {children}
   </section>
 )
 

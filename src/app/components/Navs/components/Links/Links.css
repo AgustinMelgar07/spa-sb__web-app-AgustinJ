@@ -1,0 +1,43 @@
+.cmp-links {
+  display: flex;
+  gap: var(--pal-size-2xl);
+
+  a {
+    font-weight: 500;
+    text-wrap: nowrap;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: color var(--pal-time-xs) ease-out;
+  }
+
+  &.header {
+    --cmp-separator-long: var(--pal-size-m);
+    --cmp-separator-color: rgba(var(--pal-color-base-white), 0.75);
+
+    align-items: center;
+
+    a {
+      letter-spacing: 0.0125rem;
+      color: rgba(var(--pal-color-base-white), 0.75);
+
+      &:hover {
+        color: var(--pal-color-white);
+      }
+    }
+  }
+
+  &.aside {
+    --cmp-separator-color: var(--pal-color-a-l1);
+
+    flex-direction: column;
+
+    a {
+      color: var(--pal-color-a-d2);
+
+      &:hover {
+        color: var(--pal-color-black);
+      }
+    }
+  }
+}

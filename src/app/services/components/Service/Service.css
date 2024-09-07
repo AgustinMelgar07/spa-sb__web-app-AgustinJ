@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: var(--pal-size-3xl);
 
+  scroll-margin-top: var(--pal-size-3xl);
+
   h2 {
     text-align: center;
   }
@@ -17,6 +19,7 @@
 
       display: flex;
       flex-wrap: wrap;
+      max-height: 35rem;
 
       border-radius: var(--border-radius);
       background-color: var(--pal-color-a-l2);
@@ -38,7 +41,6 @@
         width: 15vw;
         min-width: 14rem;
         height: auto;
-        max-height: 12rem;
 
         object-fit: cover;
       }

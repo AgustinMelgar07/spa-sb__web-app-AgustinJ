@@ -1,23 +1,53 @@
+:root {
+  --cmp-link-button-color: var(--pal-color-base-a-l2);
+
+  --cmp-link-button-primary-hover: var(--pal-color-white);
+  --cmp-link-button-secondary-hover: var(--pal-color-white);
+}
+
 .cmp-link-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-width: var(--glb-line-width);
-  border-style: solid;
-  border-color: var(--pal-color-a);
-  padding-inline: var(--pal-size-2xs);
-  width: 100%;
   height: var(--pal-size-2xl);
 
   text-decoration: none;
-  color: var(--pal-color-a-d1);
 
-  border-radius: var(--pal-size-2xs);
-  cursor: pointer;
+  &.primary {
+    background-color: rgba(var(--cmp-link-button-color), 1);
 
-  transition: background-color var(--pal-time-s) ease-out;
+    transition: background-color var(--pal-time-s) ease-out;
 
-  &:hover {
-    background-color: rgba(var(--pal-color-base-a), 0.125);
+    &:hover {
+      background-color: var(--cmp-link-button-primary-hover);
+    }
+  }
+
+  &.secondary {
+    border-width: var(--glb-line-width);
+    border-style: solid;
+    border-color: rgba(var(--cmp-link-button-color), 1);
+
+    color: rgba(var(--cmp-link-button-color), 1);
+
+    transition: border-color var(--pal-time-s) ease-out,
+      color var(--pal-time-s) ease-out,
+      background-color var(--pal-time-s) ease-out;
+
+    &:hover {
+      border-color: var(--cmp-link-button-secondary-hover);
+
+      color: var(--cmp-link-button-secondary-hover);
+
+      background-color: rgba(var(--cmp-link-button-color), 0.1);
+    }
+  }
+
+  &.l {
+    --cmp-icon-size: var(--pal-size-font-m);
+
+    gap: var(--pal-size-font-s);
+    height: 3.5rem;
+
+    font-size: var(--pal-size-font-m);
+
+    border-radius: var(--border-radius);
   }
 }

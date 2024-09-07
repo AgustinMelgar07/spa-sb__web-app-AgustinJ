@@ -1,17 +1,10 @@
 .cmp-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: var(--pal-size-s);
-  border: none;
-  padding-inline: var(--pal-size-2xs);
   height: var(--pal-size-2xl);
 
   color: var(--pal-color-white);
 
-  border-radius: var(--pal-size-2xs);
-  background-color: var(--pal-color-a);
-  cursor: pointer;
+  background-color: var(--cmp-button-background-color, var(--pal-color-a));
 
   transition: background-color var(--pal-time-s) ease-out,
     box-shadow var(--pal-time-s) ease-out;

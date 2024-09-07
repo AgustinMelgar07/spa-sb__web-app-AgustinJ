@@ -155,11 +155,31 @@ form {
   }
 }
 
-.card {
-  padding: var(--pal-size-xl);
+.section-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  border-radius: var(--border-radius);
-  background-color: var(--pal-color-white);
+  &.size-l {
+    .card {
+      max-width: 33rem;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xl);
+    border-width: var(--glb-line-width);
+    border-style: solid;
+    border-color: var(--pal-color-a-l2);
+    padding: var(--pal-size-xl);
+    width: 100%;
+    max-width: 26rem;
+
+    border-radius: var(--border-radius);
+    background-color: var(--pal-color-white);
+  }
 }
 
 .control {

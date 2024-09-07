@@ -11,15 +11,15 @@ export const metadata: Metadata = {
   title: getTitle(title),
 }
 
-const Login = () => (
+const SignUp = () => (
   <>
     <SimpleHero title={title} />
-    <section>
-      <section id="a">
+    <section className="sign-up section-form">
+      <div className="card">
         <SignUpForm />
-      </section>
+      </div>
     </section>
   </>
 )
 
-export default Login
+export default SignUp

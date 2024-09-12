@@ -1,60 +1,42 @@
 'use client'
 
 import './Reviews.css'
-import { Separator } from '@/components'
+import { ReviewModel } from '@/models'
+import { ReviewService } from '@/services'
+import { Banner, Separator } from '@/components'
 import { Review, ReviewForm } from './components'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { AppError } from '@/helpers'
 import jsonData from '@/data.json'
-import { publicInstance } from '@/helpers'
 
 const { reviews } = jsonData.pages.stable.home.sections
 
-const betterReviews = [
-  {
-    id: 1,
-    rating: 5,
-    comment:
-      'Un oasis en la ciudad. El servicio fue impecable y me fui sintiéndome completamente renovada.',
-  },
-  {
-    id: 2,
-    rating: 5,
-    comment:
-      'Desde que entré, me sentí en otro mundo. El personal fue muy atento, y la experiencia completa fue increíble.',
-  },
-  {
-    id: 3,
-    rating: 4,
-    comment:
-      'Muy buena experiencia, me fui con una sensación de paz total. Las instalaciones son excelentes y el personal muy profesional.',
-  },
-  {
-    id: 4,
-    rating: 4,
-    comment:
-      'Disfruté mucho mi visita al SPA. Los tratamientos fueron muy buenos y el ambiente es perfecto para desconectar.',
-  },
-]
-
 const Reviews = () => {
-  useEffect(() => {
-    const fetchReviews = async () => {
-      const response = await publicInstance.get('/reviews')
+  const [bestReviews, setBestReviews] = useState<ReviewModel.Data[]>()
 
-      console.log(response)
+  useEffect(() => {
+    const fetchAsync = async () => {
+      const bestReviewsData = await ReviewService.getTheBest()
+
+      if (bestReviewsData && !(bestReviewsData instanceof AppError))
+        setBestReviews(bestReviewsData)
     }
 
-    fetchReviews()
+    fetchAsync()
   }, [])
 
   return (
     <section className="reviews">
-      <h2>{reviews.title}</h2>
-      <ul>
-        {betterReviews.map(({ id, rating, comment }) => (
-          <Review key={id} rating={rating} comment={comment} />
-        ))}
-      </ul>
+      <h2 className="text">{reviews.title}</h2>
+      {!bestReviews || bestReviews.length === 0 ? (
+        <Banner type="no-content" text="Nada por aquí ..." />
+      ) : (
+        <ul>
+          {bestReviews.map(review => (
+            <Review key={review.id} {...review} />
+          ))}
+        </ul>
+      )}
       <Separator />
       <article>
         <h3>{reviews.subtitle}</h3>

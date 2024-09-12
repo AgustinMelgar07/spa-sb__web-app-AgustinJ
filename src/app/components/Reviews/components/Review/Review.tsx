@@ -2,11 +2,11 @@ import './Review.css'
 import { Icon } from '@/components'
 
 interface Props {
-  rating: number
+  stars: number
   comment: string
 }
 
-const Review = ({ rating, comment }: Props) => (
+const Review = ({ stars, comment }: Props) => (
   <li className="review">
     <header>
       <div className="profile-picture">
@@ -16,7 +16,7 @@ const Review = ({ rating, comment }: Props) => (
         {Array.from({ length: 5 }).map((_, index) => (
           <Icon
             key={index}
-            faIcon={index < rating ? 'fa-solid fa-star' : 'fa-regular fa-star'}
+            faIcon={index < stars ? 'fa-solid fa-star' : 'fa-regular fa-star'}
           />
         ))}
       </div>

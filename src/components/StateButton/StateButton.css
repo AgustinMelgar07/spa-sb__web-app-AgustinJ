@@ -1,0 +1,54 @@
+.cmp-state-button {
+  position: relative;
+
+  height: var(--pal-size-2xl);
+
+  background-color: var(--cmp-button-background-color, var(--pal-color-a));
+
+  transition: background-color var(--pal-time-s) ease-out,
+    box-shadow var(--pal-time-s) ease-out;
+
+  &:hover {
+    box-shadow: var(--pal-shadow-1);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: initial;
+
+    background-color: default;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  > * {
+    position: absolute;
+
+    color: var(--pal-color-white);
+
+    scale: 0;
+    opacity: 0;
+
+    transition: scale var(--pal-time-m) ease, opacity var(--pal-time-m) ease-out;
+  }
+
+  .active {
+    scale: 1;
+    opacity: initial;
+  }
+
+  > .cmp-icon {
+    --cmp-icon-size: var(--pal-size-font-m);
+  }
+
+  .body {
+    --cmp-icon-size: var(--pal-size-font-s);
+
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-s);
+  }
+}

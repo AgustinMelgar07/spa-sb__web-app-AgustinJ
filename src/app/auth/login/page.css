@@ -1,9 +1,0 @@
-.login {
-  --cmp-link-button-color: var(--pal-color-base-a);
-  --cmp-link-button-secondary-hover: var(--pal-color-a);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--pal-size-m);
-}

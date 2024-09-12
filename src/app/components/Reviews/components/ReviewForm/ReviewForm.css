@@ -51,7 +51,7 @@
     padding: var(--pal-size-xs);
   }
 
-  .cmp-button {
+  .cmp-state-button {
     align-self: flex-end;
 
     width: 100%;

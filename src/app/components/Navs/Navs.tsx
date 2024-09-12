@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { Hamburger, Links } from './components'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { SessionProvider } from 'next-auth/react'
+import jsonData from '@/data.json'
+
+const { logo } = jsonData
 
 const Navs = () => {
   const asideRef = useRef<HTMLElement | null>(null)
@@ -46,13 +49,19 @@ const Navs = () => {
   return (
     <SessionProvider>
       <header className="cmp-header">
-        <Image className="logo" src="/logo.svg" width={40} height={40} alt="" />
-        {/* TODO: alt */}
+        <Image
+          className="logo"
+          src="/logo.svg"
+          width={40}
+          height={40}
+          alt={logo.alt}
+          priority
+        />
         <Links />
         <Hamburger isOpen={isAsideOpen} handleClick={handleHamburgerClick} />
       </header>
       <aside className="cmp-aside" ref={asideRef}>
-        <Links style={{ type: 'aside' }} />
+        <Links type="aside" />
       </aside>
     </SessionProvider>
   )

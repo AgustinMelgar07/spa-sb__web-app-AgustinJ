@@ -6,7 +6,7 @@ import { Section } from './components'
 import { reassemble } from '@/helpers'
 import jsonData from '@/data.json'
 
-const { socialNets, footer, pages } = jsonData
+const { logo, socialNets, footer, pages } = jsonData
 const { sections, copyright, madeBy } = footer
 const { stable } = pages
 const { services } = stable
@@ -24,7 +24,7 @@ const Footer = () => (
         src="/logo.svg"
         width={128}
         height={128}
-        alt="P" // TODO: alt
+        alt={logo.alt}
       />
       <div className="sections">
         <Section title={sections[0]}>

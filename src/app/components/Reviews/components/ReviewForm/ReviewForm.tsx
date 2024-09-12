@@ -1,9 +1,13 @@
 import './ReviewForm.css'
-import { Button, Icon, TextArea } from '@/components'
-import { FormEventHandler, useState } from 'react'
+import { Banner, Icon, StateButton, TextArea } from '@/components'
+import { useState } from 'react'
+import { useFetchState, useShowBanner } from '@/hooks'
+import { ReviewModel } from '@/models'
+import { ReviewService } from '@/services'
+import { AppError } from '@/helpers'
 import jsonData from '@/data.json'
 
-const { placeholder } = jsonData.pages.stable.home.sections.reviews
+const { placeholder, thanks } = jsonData.pages.stable.home.sections.reviews
 
 const ReviewForm = () => {
   const [hoveredStar, setHoveredStar] = useState<number | null>(null)
@@ -13,16 +17,28 @@ const ReviewForm = () => {
   const handleMouseLeave = () => setHoveredStar(null)
   const handleClick = (index: number) => setSelectedStar(index)
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
-    event.preventDefault()
+  const { fetchState, handleSubmit } = useFetchState(
+    async ({ formData, setLoading, setError, setSuccess }) => {
+      await setLoading()
 
-    const data = new FormData(event.currentTarget)
+      const createResponse = await ReviewService.create({
+        stars: Number(formData.get('stars')) as ReviewModel.StarRating,
+        comment: formData.get('comment') as string,
+      })
 
-    const comment = data.get('comment') as string
-    const rating = selectedStar
-  }
+      if (!createResponse || createResponse instanceof AppError) {
+        await setError()
+      } else {
+        await setSuccess()
+      }
+    }
+  )
 
-  return (
+  const { showBanner } = useShowBanner(fetchState)
+
+  return showBanner ? (
+    <Banner text={thanks} />
+  ) : (
     <form className="cmp-review-form review" onSubmit={handleSubmit}>
       <header>
         <div className="profile-picture">
@@ -45,7 +61,7 @@ const ReviewForm = () => {
                 />
                 <input
                   title={`${starIndex} estrella/s`}
-                  name="star"
+                  name="stars"
                   type="radio"
                   value={starIndex}
                   required
@@ -61,10 +77,16 @@ const ReviewForm = () => {
           id="comment"
           title="Comentarios"
           placeholder={placeholder}
+          required
           hideLabel
         />
       </div>
-      <Button title="Enviar" />
+      <StateButton
+        text="Enviar"
+        title="Enviar reseña"
+        faIcon="fa-solid fa-arrow-right"
+        fetchState={fetchState}
+      />
     </form>
   )
 }

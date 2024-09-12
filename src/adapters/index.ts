@@ -1,2 +1,3 @@
-export * as ClientAdapter from './client.adapter'
-export * as PersonalAdapter from './personal.adapter'
+export * as AuthAdapter from './auth.adapter'
+export * as UserAdapter from './user.adapter'
+export * as ReviewAdapter from './review.adapter'

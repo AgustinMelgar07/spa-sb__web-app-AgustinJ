@@ -1,34 +1,55 @@
 'use client'
 
 import './LoginForm.css'
-import { Button, Input } from '@/components'
-import { FormEventHandler } from 'react'
+import { Input, LinkButton, StateButton } from '@/components'
+import { useRouter } from 'next/navigation'
+import { useFetchState } from '@/hooks'
 import { signIn } from 'next-auth/react'
+import jsonData from '@/data.json'
+
+const { login, signUp, profile } = jsonData.pages.dynamic
+const { title, button } = login.form
 
 const LoginForm = () => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
-    event.preventDefault()
+  const router = useRouter()
 
-    const data = new FormData(event.currentTarget)
-    const email = data.get('email') as string
-    const password = data.get('password') as string
+  const { fetchState, handleSubmit } = useFetchState(
+    async ({ formData, setLoading, setError, setSuccess }) => {
+      await setLoading()
 
-    console.log(email)
-    console.log(password)
+      const signInResponse = await signIn('credentials', {
+        redirect: false,
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+      })
 
-    // await signIn('credentials', {
-    //   redirect: true,
-    //   email,
-    //   password,
-    // })
-  }
+      if (signInResponse?.error) {
+        await setError()
+        console.log(signInResponse.error)
+      } else {
+        router.push(`/${profile.page}`)
+        await setSuccess()
+      }
+    }
+  )
 
   return (
-    <form className="cmp-login-form" onSubmit={handleSubmit}>
-      <Input id="email" title="Correo electrónico" required type="email" />
-      <Input id="password" title="Contraseña" required type="password" />
-      <Button title="Iniciar sesión" />
-    </form>
+    <div className="cmp-login-form">
+      <h3>{title}</h3>
+      <form onSubmit={handleSubmit}>
+        <Input id="email" title="Correo electrónico" required type="email" />
+        <Input id="password" title="Contraseña" required type="password" />
+        <StateButton text={button} title={button} fetchState={fetchState} />
+      </form>
+      <div className="register">
+        <small className="text">¿No tienes una cuenta?</small>
+        <LinkButton
+          title="Registrarse"
+          href={`/${signUp.page}`}
+          style={{ type: 'secondary' }}
+        />
+      </div>
+    </div>
   )
 }
 

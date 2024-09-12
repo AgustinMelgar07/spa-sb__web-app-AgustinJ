@@ -1,42 +1,78 @@
 'use client'
 
-import './SignUpForm.css'
-import { Button, Input } from '@/components'
-import { FormEventHandler } from 'react'
+import { Input, StateButton } from '@/components'
+import { useFetchState } from '@/hooks'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { AuthService } from '@/services'
+import { AppError } from '@/helpers'
+import jsonData from '@/data.json'
+
+const { signUp, profile } = jsonData.pages.dynamic
+const { title, button } = signUp.form
 
 const SignUpForm = () => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async event => {
-    event.preventDefault()
+  const router = useRouter()
 
-    // TODO: comprobar que las contraseñas sean iguales
+  const { fetchState, handleSubmit } = useFetchState(
+    async ({ formData, setLoading, setError, setSuccess }) => {
+      await setLoading()
 
-    const data = new FormData(event.currentTarget)
-    const email = data.get('email') as string
-    const password = data.get('password') as string
-  }
+      const registerResponse = await AuthService.register({
+        name: formData.get('name') as string,
+        lastName: formData.get('lastName') as string,
+        phone: formData.get('phone') as string,
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+      })
+
+      if (registerResponse instanceof AppError) {
+        await setError()
+        return
+      }
+
+      const signInResponse = await signIn('credentials', {
+        redirect: false,
+        email: formData.get('email') as string,
+        password: formData.get('password') as string,
+      })
+
+      if (signInResponse?.error) {
+        await setError()
+        console.log(signInResponse.error)
+      } else {
+        await setSuccess()
+        router.push(`/${profile.page}`)
+      }
+    }
+  )
 
   return (
-    <form className="cmp-sign-up-form" onSubmit={handleSubmit}>
-      <Input id="firstName" title="Nombre" required />
-      <Input id="lastName" title="Apellido" required />
-      <Input
-        id="phone"
-        title="Teléfono"
-        type="tel"
-        // TODO: test del formato
-        pattern="\+54[0-9]{11}"
-        placeholder="+54___________"
-      />
-      <Input id="email" title="Correo electrónico" required type="email" />
-      <Input id="password" title="Contraseña" required type="password" />
-      <Input
-        id="confirmPassword"
-        title="Confirmar contraseña"
-        required
-        type="password"
-      />
-      <Button title="Registrarse" />
-    </form>
+    <div className="cmp-sign-up-form">
+      <h3>{title}</h3>
+      <form onSubmit={handleSubmit}>
+        <Input id="name" title="Nombre" required />
+        <Input id="lastName" title="Apellido" required />
+        <Input
+          id="phone"
+          title="Teléfono"
+          type="tel"
+          // TODO: test del formato
+          pattern="\+54[0-9]{11}"
+          placeholder="+54___________"
+        />
+        <Input id="email" title="Correo electrónico" required type="email" />
+        <Input
+          id="password"
+          title="Contraseña"
+          required
+          type="password"
+          minLength={8}
+        />
+        {/* TODO: implementar input de confirmar contraseña */}
+        <StateButton text={button} title={button} fetchState={fetchState} />
+      </form>
+    </div>
   )
 }
 

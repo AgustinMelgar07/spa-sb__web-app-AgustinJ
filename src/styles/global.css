@@ -160,16 +160,15 @@ form {
   flex-direction: column;
   align-items: center;
 
-  &.size-l {
-    .card {
-      max-width: 33rem;
-    }
+  &.size-l > * {
+    max-width: 33rem;
   }
 
-  .card {
+  > * {
     display: flex;
     flex-direction: column;
-    gap: var(--pal-size-xl);
+    align-items: center;
+    gap: 4rem;
     border-width: var(--glb-line-width);
     border-style: solid;
     border-color: var(--pal-color-a-l2);
@@ -179,6 +178,12 @@ form {
 
     border-radius: var(--border-radius);
     background-color: var(--pal-color-white);
+
+    > * {
+      width: 100%;
+
+      text-align: center;
+    }
   }
 }
 
@@ -193,7 +198,7 @@ form {
 
     font-size: var(--pal-size-font-xs);
 
-    color: var(--pal-color-a-d1);
+    color: var(--pal-color-a-d2);
 
     span {
       color: var(--pal-color-a-d2);

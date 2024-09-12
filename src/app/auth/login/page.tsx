@@ -1,5 +1,4 @@
-import './page.css'
-import { LinkButton, SimpleHero } from '@/components'
+import { SimpleHero } from '@/components'
 import { LoginForm } from './components'
 import { Metadata } from 'next'
 import { getTitle } from '@/constants'
@@ -14,17 +13,8 @@ export const metadata: Metadata = {
 const Login = () => (
   <>
     <SimpleHero title={title} />
-    <section className="login section-form">
-      Title
-      <div className="card">
-        <LoginForm />
-        <small>¿No tienes una cuenta?</small>
-        <LinkButton
-          title="Registrarse"
-          href="/auth/sign-up"
-          style={{ type: 'secondary' }}
-        />
-      </div>
+    <section className="section-form">
+      <LoginForm />
     </section>
   </>
 )

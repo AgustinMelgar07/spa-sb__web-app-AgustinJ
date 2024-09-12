@@ -5,6 +5,9 @@
       "separator": "•"
     }
   },
+  "logo": {
+    "alt": "Logo del Spa Sentirse Bien"
+  },
   "socialNets": {
     "title": "Cuenta de",
     "items": [
@@ -57,7 +60,8 @@
           "reviews": {
             "title": "Opiniones de clientes",
             "subtitle": "¿Ya nos visitaste?",
-            "placeholder": "Cuéntanos cómo fue tu experiencia ..."
+            "placeholder": "Cuéntanos cómo fue tu experiencia ...",
+            "thanks": "¡Gracias! Su opinión es valiosa y nos ayuda a seguir brindando un mejor servicio."
           }
         }
       },
@@ -151,9 +155,14 @@
           }
         ]
       },
-      "consult": {
-        "page": "consult",
-        "title": "Consultar"
+      "inquire": {
+        "page": "inquire",
+        "title": "Consultar",
+        "form": {
+          "title": "Deja tu pregunta",
+          "button": "Consultar"
+        },
+        "thanks": "¡Gracias! Recibirás nuestra respuesta en un plazo de hasta 24 horas a través del correo que nos has proporcionado."
       },
       "news": {
         "page": "news",
@@ -173,11 +182,19 @@
       },
       "login": {
         "page": "auth/login",
-        "title": "Iniciar sesión"
+        "title": "Iniciar sesión",
+        "form": {
+          "title": "Bienvenido",
+          "button": "Acceder"
+        }
       },
       "signUp": {
         "page": "auth/sign-up",
-        "title": "Registrarse"
+        "title": "Registrarse",
+        "form": {
+          "title": "Crea tu cuenta",
+          "button": "Crear y acceder"
+        }
       },
       "profile": {
         "page": "profile",
@@ -191,8 +208,8 @@
         "page": "my-appts",
         "title": "Mis Turnos"
       },
-      "queries": {
-        "page": "queries",
+      "inquiries": {
+        "page": "inquiries",
         "title": "Consultas"
       }
     }

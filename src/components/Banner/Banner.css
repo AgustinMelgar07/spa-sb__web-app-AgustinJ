@@ -1,0 +1,65 @@
+@keyframes showBanner {
+  to {
+    translate: initial;
+    opacity: initial;
+  }
+}
+
+.cmp-banner {
+  --cmp-icon-size: var(--pal-size-font-m);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pal-size-l);
+  border-width: var(--glb-line-width);
+  border-style: solid;
+  padding: var(--pal-size-xl);
+  max-width: 33rem;
+
+  border-radius: var(--border-radius);
+  background-color: var(--pal-color-white);
+  translate: 0 2rem;
+  opacity: 0;
+
+  animation: showBanner var(--pal-time-l) ease forwards;
+
+  &.success {
+    border-color: var(--pal-color-a-l2);
+
+    .state-container {
+      color: var(--pal-color-a-d1);
+
+      background-color: var(--pal-color-a-l2);
+    }
+  }
+
+  &.no-content {
+    border-color: var(--pal-color-gs-100);
+
+    .state-container {
+      color: var(--pal-color-gs-700);
+
+      background-color: var(--pal-color-gs-100);
+    }
+  }
+
+  p {
+    font-weight: 500;
+    text-align: center;
+    color: var(--pal-color-gs-600);
+  }
+
+  .state-container {
+    align-content: center;
+    aspect-ratio: 1;
+    width: 3rem;
+
+    border-radius: 50%;
+
+    > * {
+      margin-inline: auto;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import './Links.css'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components'
 import { classList, reassemble } from '@/helpers'
@@ -15,28 +16,33 @@ const stableLinks = reassemble(stable, (_, { page, title }) => ({
 }))
 
 interface Props {
-  style?: {
-    type?: 'header' | 'aside'
-  }
+  type?: 'header' | 'aside'
 }
 
-const Links = ({ style }: Props) => {
+const Links = ({ type = 'header' }: Props) => {
   const { data } = useSession()
+  const { user } = data || {}
 
   return (
-    <nav className={classList('cmp-links', style?.type || 'header')}>
+    <nav className={classList('cmp-links', type)}>
       {stableLinks.map(({ href, title }) => (
-        <Link key={href} href={href}>
+        <Link className="page" key={href} href={href}>
           {title}
         </Link>
       ))}
-      <Separator style={{ invert: (style?.type || 'header') === 'header' }} />
-      {data ? (
-        <Link className="primary" href={`/${profile.page}`}>
-          {data.user.name}
+      <Separator style={{ invert: type === 'header' }} />
+      {user ? (
+        <Link className="highlight profile" href={`/${profile.page}`}>
+          <Image
+            src={user.profilePhotoUrl}
+            alt={`Foto de perfil de ${user.name} ${user.lastName}`}
+            width={32}
+            height={32}
+          />
+          {user.name} {user.lastName[0]}.
         </Link>
       ) : (
-        <Link className="primary" href={`/${login.page}`}>
+        <Link className="highlight" href={`/${login.page}`}>
           {login.title}
         </Link>
       )}

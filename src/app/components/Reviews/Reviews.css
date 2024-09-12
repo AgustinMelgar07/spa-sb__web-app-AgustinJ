@@ -7,6 +7,10 @@
   justify-content: center;
   gap: 8rem;
 
+  h2 {
+    text-align: center;
+  }
+
   ul {
     flex-wrap: wrap;
     align-items: flex-start;

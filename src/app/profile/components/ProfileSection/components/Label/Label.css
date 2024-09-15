@@ -1,0 +1,23 @@
+.cmp-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-m);
+  padding: var(--pal-size-m);
+
+  border-radius: var(--border-radius);
+  background-color: var(--pal-color-white);
+
+  small {
+    color: var(--pal-color-a-d1);
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-m);
+
+    .cmp-icon {
+      color: var(--pal-color-a);
+    }
+  }
+}

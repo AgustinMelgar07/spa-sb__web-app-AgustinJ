@@ -31,7 +31,7 @@ export const useFetchState = (
 
   const setSuccess = useCallback(async () => {
     setFetchState('success')
-    await sleep(3000)
+    await sleep(2000)
     setFetchState('ready')
   }, [])
 

@@ -1,0 +1,17 @@
+.apply-at {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--pal-size-3xl);
+  margin-inline: auto;
+  max-width: 50rem;
+
+  text-align: center;
+
+  .cmp-link-button {
+    --cmp-link-button-color: var(--pal-color-base-a);
+    --cmp-link-button-primary-hover: var(--pal-color-a);
+
+    color: var(--pal-color-white);
+  }
+}

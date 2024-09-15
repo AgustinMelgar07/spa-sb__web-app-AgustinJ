@@ -2,9 +2,9 @@ import './LinkButton.css'
 import Link from 'next/link'
 import { Icon } from '..'
 import { classList } from '@/helpers'
+import { AnchorHTMLAttributes } from 'react'
 
-interface Props {
-  title: string
+interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   faIcon?: string
   href: string
   style?: {

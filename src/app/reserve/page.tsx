@@ -1,29 +1,32 @@
-import './page.css'
+'use client'
+
+import { useEffect } from 'react'
+import { SessionProvider } from 'next-auth/react'
+import { PrivateInterceptor, PublicInterceptor } from '@/interceptors'
 import { SimpleHero } from '@/components'
 import { ReserveForm } from './components'
-import { protectRoute } from '@/guards'
-import { getTitle } from '@/constants'
+import { Protect } from '@/guards'
 import { Metadata } from 'next'
+import { getTitle } from '@/constants'
 import jsonData from '@/data.json'
 
 const { title } = jsonData.pages.dynamic.reserve
 
-export const metadata: Metadata = {
-  title: getTitle(title),
-}
-
-const Reserve = async () => {
-  await protectRoute()
+const Reserve = () => {
+  useEffect(() => {
+    PublicInterceptor()
+    PrivateInterceptor()
+  }, [])
 
   return (
-    <>
-      <SimpleHero title={title} />
-      <section className="reserve section-form size-l">
-        <div className="card">
+    <SessionProvider>
+      <Protect>
+        <SimpleHero title={title} />
+        <section className="section-form size-l">
           <ReserveForm />
-        </div>
-      </section>
-    </>
+        </section>
+      </Protect>
+    </SessionProvider>
   )
 }
 

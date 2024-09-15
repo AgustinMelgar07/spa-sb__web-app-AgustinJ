@@ -3,6 +3,7 @@
 import './InquireForm.css'
 import { Banner, Input, StateButton, TextArea } from '@/components'
 import { useFetchState, useShowBanner } from '@/hooks'
+import { InquiryService } from '@/services'
 import { AppError } from '@/helpers'
 import jsonData from '@/data.json'
 
@@ -12,30 +13,21 @@ const { button, title } = form
 const InquireForm = () => {
   const { fetchState, handleSubmit } = useFetchState(
     async ({ formData, setLoading, setError, setSuccess }) => {
-      // await setLoading()
-      // const registerResponse = await AuthService.register({
-      //   name: formData.get('name') as string,
-      //   lastName: formData.get('lastName') as string,
-      //   phone: formData.get('phone') as string,
-      //   email: formData.get('email') as string,
-      //   password: formData.get('password') as string,
-      // })
-      // if (registerResponse instanceof AppError) {
-      //   await setError()
-      //   return
-      // }
-      // const signInResponse = await signIn('credentials', {
-      //   redirect: false,
-      //   email: formData.get('email') as string,
-      //   password: formData.get('password') as string,
-      // })
-      // if (signInResponse?.error) {
-      //   await setError()
-      //   console.log(signInResponse.error)
-      // } else {
-      //   await setSuccess()
-      //   router.push(`/${profile.page}`)
-      // }
+      await setLoading()
+
+      const createResponse = await InquiryService.create({
+        name: formData.get('name') as string,
+        lastName: formData.get('lastName') as string,
+        phone: formData.get('phone') as string,
+        email: formData.get('email') as string,
+        desc: formData.get('desc') as string,
+      })
+
+      if (createResponse instanceof AppError) {
+        await setError()
+      } else {
+        await setSuccess()
+      }
     }
   )
 
@@ -57,7 +49,7 @@ const InquireForm = () => {
           pattern="\+54[0-9]{11}"
           placeholder="+54___________"
         />
-        <Input id="email" title="Correo electrónico" required type="email" />
+        <Input id="email" title="Correo electrónico" type="email" required />
         <TextArea id="desc" title="Consulta" required />
         <StateButton text={button} title={button} fetchState={fetchState} />
       </form>

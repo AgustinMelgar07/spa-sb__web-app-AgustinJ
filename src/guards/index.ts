@@ -1,1 +1,1 @@
-export * from './protectRoute.guard'
+export { default as Protect } from './Protect/Protect'

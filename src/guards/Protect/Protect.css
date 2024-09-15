@@ -1,0 +1,12 @@
+.page-loading {
+  align-content: center;
+  height: 100dvh;
+
+  .cmp-loader {
+    --cmp-loader-size: var(--pal-size-xl);
+
+    margin-inline: auto;
+
+    color: var(--pal-color-a);
+  }
+}

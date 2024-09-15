@@ -6,6 +6,8 @@
 }
 
 .cmp-link-button {
+  display: flex;
+  gap: var(--pal-size-m);
   height: var(--pal-size-2xl);
 
   text-decoration: none;

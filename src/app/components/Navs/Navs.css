@@ -16,7 +16,7 @@
   }
 
   /* Antes que el nav desborde */
-  @media (width <= 60rem) {
+  @media (width <= 75rem) {
     nav {
       display: none;
     }

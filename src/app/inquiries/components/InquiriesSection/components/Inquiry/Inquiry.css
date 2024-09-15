@@ -1,0 +1,44 @@
+.inquiry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pal-size-l);
+  border-width: var(--glb-line-width);
+  border-style: solid;
+  border-color: var(--pal-color-a-l2);
+  padding: var(--pal-size-xl);
+
+  border-radius: var(--border-radius);
+  background-color: var(--pal-color-white);
+
+  article {
+    flex-basis: auto;
+
+    min-width: 100%;
+
+    header {
+      flex-wrap: wrap;
+      gap: var(--pal-size-m);
+
+      > p {
+        flex-grow: 1;
+
+        font-weight: 500;
+      }
+
+      .info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--pal-size-l);
+      }
+    }
+  }
+
+  form {
+    .cmp-state-button {
+      align-self: flex-end;
+
+      width: 100%;
+      max-width: 8rem;
+    }
+  }
+}

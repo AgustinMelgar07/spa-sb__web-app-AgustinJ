@@ -168,9 +168,15 @@
         "page": "news",
         "title": "Novedades"
       },
-      "join": {
-        "page": "join",
-        "title": "Postularse"
+      "applyAt": {
+        "page": "apply-at",
+        "title": "Postularse",
+        "subtitle": "Sé parte de nuestro equipo",
+        "text": "Nos encantaría conocer más sobre ti y lo que puedes aportar a nuestro equipo. Por favor, envíanos toda la información que consideres importante, pero no te olvides de incluir tu CV. ¡Gracias!",
+        "link": {
+          "title": "Enviar correo",
+          "email": "newuser_0525@outlook.com"
+        }
       }
     },
     "dynamic": {
@@ -202,7 +208,13 @@
       },
       "reserve": {
         "page": "reserve",
-        "title": "Reservar"
+        "title": "Reservar",
+        "form": {
+          "title": "Elija su turno",
+          "button": "Reservar",
+          "noWeekendWork": "No trabajamos los fines de semana. Por favor, elige otro día."
+        },
+        "thanks": "¡Tu reserva ha sido confirmada! Puedes ver los detalles en la sección 'Mis Turnos'. ¡Te esperamos!"
       },
       "myAppts": {
         "page": "my-appts",

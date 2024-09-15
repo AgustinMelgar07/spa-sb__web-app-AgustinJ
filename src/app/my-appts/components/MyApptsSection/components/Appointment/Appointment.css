@@ -1,0 +1,102 @@
+.appointment {
+  display: flex;
+  flex-direction: column;
+  border-width: var(--glb-line-width);
+  border-style: solid;
+  border-color: var(--pal-color-gs-100);
+
+  border-radius: var(--border-radius);
+  background-color: var(--pal-color-white);
+
+  overflow: hidden;
+
+  > small {
+    padding-block: var(--pal-size-xs);
+    padding-inline: var(--pal-size-s);
+    width: 100%;
+
+    letter-spacing: 0.0125rem;
+    color: var(--pal-color-white);
+
+    &.pending {
+      background-color: var(--pal-color-b);
+    }
+
+    &.cancelled {
+      background-color: var(--pal-color-gs-500);
+    }
+
+    &.completed {
+      background-color: var(--pal-color-a);
+    }
+  }
+
+  > * {
+    --cmp-separator-color: var(--pal-color-gs-200);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-xl);
+    padding: var(--pal-size-xl);
+
+    header {
+      --cmp-icon-size: var(--pal-size-l);
+
+      display: flex;
+      align-items: center;
+      gap: var(--pal-size-l);
+
+      color: var(--pal-color-gs-500);
+
+      h2 {
+        font-size: var(--pal-size-font-l);
+        font-family: var(--pal-font-a);
+        letter-spacing: 0.0125rem;
+
+        color: var(--pal-color-gs-700);
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--pal-size-xl);
+
+      .item {
+        display: flex;
+        gap: var(--pal-size-m);
+
+        color: var(--pal-color-gs-800);
+
+        border-radius: var(--pal-size-2xs);
+
+        &.highlight {
+          padding-block: var(--pal-size-s);
+          padding-inline: var(--pal-size-m);
+
+          font-weight: 600;
+          letter-spacing: 0.0125rem;
+
+          background-color: var(--pal-color-a-l2);
+
+          .value {
+            color: var(--pal-color-a-d1);
+          }
+        }
+      }
+    }
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-m);
+
+    color: var(--pal-color-a);
+
+    p {
+      color: var(--pal-color-gs-800);
+    }
+  }
+}

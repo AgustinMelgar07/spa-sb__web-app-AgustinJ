@@ -93,7 +93,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: var(--pal-size-xl);
+  padding-inline: var(--pal-size-l);
 
   font-weight: 500;
   letter-spacing: 0.0125rem;

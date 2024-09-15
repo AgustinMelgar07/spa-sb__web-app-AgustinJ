@@ -18,9 +18,6 @@ export const metadata: Metadata = {
 const publicSans = Public_Sans({ subsets: ['latin'] })
 const ebGaramond = EB_Garamond({ subsets: ['latin'] })
 
-PublicInterceptor()
-PrivateInterceptor()
-
 const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html lang="es">
     <body

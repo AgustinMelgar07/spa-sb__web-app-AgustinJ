@@ -1,4 +1,32 @@
-.cmp-reserve-form {
+.cmp-reserve-form form {
+  .radio {
+    display: flex;
+    align-items: center;
+    gap: var(--pal-size-s);
+    border-width: var(--glb-line-width);
+    border-style: solid;
+    border-color: var(--pal-color-a-l2);
+    padding-block: var(--pal-size-xs);
+    padding-inline: var(--pal-size-s);
+
+    text-wrap: nowrap;
+
+    border-radius: var(--pal-size-2xs);
+    cursor: pointer;
+
+    transition: background-color var(--pal-time-s) ease-out;
+    accent-color: var(--pal-color-a-d1);
+
+    &:has(input:checked),
+    &:hover {
+      background-color: var(--pal-color-a-l2);
+    }
+
+    input {
+      cursor: pointer;
+    }
+  }
+
   .treatments {
     display: flex;
     flex-direction: column;
@@ -14,6 +42,8 @@
       border-top-width: var(--glb-line-width);
       padding: 0;
 
+      text-align: start;
+
       legend {
         margin-bottom: var(--pal-size-s);
         padding-right: var(--pal-size-s);
@@ -21,34 +51,31 @@
         font-size: var(--pal-size-font-xs);
         color: var(--pal-color-a-d1);
       }
+    }
+  }
 
-      label {
-        display: flex;
-        align-items: center;
-        gap: var(--pal-size-s);
-        border-width: var(--glb-line-width);
-        border-style: solid;
-        border-color: var(--pal-color-a-l2);
-        padding-block: var(--pal-size-xs);
-        padding-inline: var(--pal-size-s);
+  .available-hours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pal-size-s);
 
-        text-wrap: nowrap;
+    .cmp-loader {
+      color: var(--pal-color-a);
+    }
 
-        border-radius: var(--pal-size-2xs);
-        accent-color: var(--pal-color-a-d1);
-        cursor: pointer;
+    p {
+      padding: var(--pal-size-l);
 
-        transition: background-color var(--pal-time-s) ease-out;
+      font-weight: 500;
+      color: var(--pal-color-gs-700);
 
-        &:has(input:checked),
-        &:hover {
-          background-color: var(--pal-color-a-l2);
-        }
+      border-radius: var(--pal-size-2xs);
+      background-color: var(--pal-color-gs-50);
+    }
 
-        input {
-          cursor: pointer;
-        }
-      }
+    .radio {
+      width: 100%;
     }
   }
 }

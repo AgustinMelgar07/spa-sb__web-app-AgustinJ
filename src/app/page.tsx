@@ -4,7 +4,7 @@ import { Hero, LinkButton } from '@/components'
 import { Reviews, ServiceCard } from './components'
 import jsonData from '@/data.json'
 
-const { pages, documentInfo } = jsonData
+const { documentInfo, logo, pages } = jsonData
 const { stable, dynamic } = pages
 const { home } = stable
 const { reserve } = dynamic
@@ -16,6 +16,14 @@ const Home = () => (
   <>
     <Hero handleClass="home-hero">
       <header>
+        <Image
+          className="enter-animate"
+          src="/logo.svg"
+          width={96}
+          height={96}
+          alt={logo.alt}
+          priority
+        />
         <h1 className="text enter-animate">{documentInfo.title.base}</h1>
         <p className="text enter-animate">{phrase}</p>
       </header>

@@ -1,0 +1,14 @@
+.my-appts-section {
+  margin-inline: auto;
+  max-width: 50rem;
+
+  .cmp-banner {
+    max-width: initial;
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pal-size-2xl);
+  }
+}

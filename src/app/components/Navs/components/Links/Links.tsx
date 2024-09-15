@@ -2,9 +2,10 @@ import './Links.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@/components'
+import { useSession } from 'next-auth/react'
+import { getPrivatePages } from '@/constants'
 import { classList, reassemble } from '@/helpers'
 import jsonData from '@/data.json'
-import { useSession } from 'next-auth/react'
 
 const { pages } = jsonData
 const { stable, dynamic } = pages
@@ -21,7 +22,7 @@ interface Props {
 
 const Links = ({ type = 'header' }: Props) => {
   const { data } = useSession()
-  const { user } = data || {}
+  const user = data?.user
 
   return (
     <nav className={classList('cmp-links', type)}>
@@ -32,15 +33,22 @@ const Links = ({ type = 'header' }: Props) => {
       ))}
       <Separator style={{ invert: type === 'header' }} />
       {user ? (
-        <Link className="highlight profile" href={`/${profile.page}`}>
-          <Image
-            src={user.profilePhotoUrl}
-            alt={`Foto de perfil de ${user.name} ${user.lastName}`}
-            width={32}
-            height={32}
-          />
-          {user.name} {user.lastName[0]}.
-        </Link>
+        <>
+          {getPrivatePages(user.role).map(({ page, title }) => (
+            <Link key={page} className="page" href={`/${page}`}>
+              {title}
+            </Link>
+          ))}
+          <Link className="highlight profile" href={`/${profile.page}`}>
+            <Image
+              src={user.profilePhotoUrl}
+              alt={`Foto de perfil de ${user.name} ${user.lastName}`}
+              width={32}
+              height={32}
+            />
+            {user.name} {user.lastName[0]}.
+          </Link>
+        </>
       ) : (
         <Link className="highlight" href={`/${login.page}`}>
           {login.title}

@@ -1,5 +1,5 @@
-import { classList } from '@/helpers'
 import './Loader.css'
+import { classList } from '@/helpers'
 
 export interface Props {
   handlingClass?: string
